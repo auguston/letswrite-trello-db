@@ -1,0 +1,102 @@
+- var link = 'letswrite-trello-db'
+- var title = '拿Trello當資料庫 建一個店家清單：下篇-建立清單頁面'
+- var description = '文章大綱'
+
+<!DOCTYPE html>
+html(lang="zh-TW")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title #{title} - Augustus - Let's Write
+
+    link(rel="canonical", href=`https://auguston.github.io/${link}/`)
+    meta(property="og:url", content=`https://auguston.github.io/${link}/`)
+
+    meta(property="fb:app_id", content="2435108729902508")
+    meta(property="og:type", content="website")
+
+    meta(property="og:site_name", content="Let's Write")
+    meta(property="og:title", content=`${title} - Augustus - Let's Write`)
+    meta(itemprop="name", content=`${title} - Augustus - Let's Write`)
+
+    meta(name="description", content=description)
+    meta(property="og:description", content=description)
+    meta(itemprop="description", content=description)
+
+    meta(itemprop="image", content=`https://auguston.github.io/${link}/fb.jpg`)
+    meta(property="og:image", content=`https://auguston.github.io/${link}/fb.jpg`)
+    meta(property="og:image:width", content="1200")
+    meta(property="og:image:height", content="630")
+    meta(property="og:image:alt", content=title)
+
+    link(rel="shortcut icon", href="https://i0.wp.com/letswrite.tw/wp-content/uploads/2019/07/cropped-letswrite512-1.jpg")
+
+    //- css
+    link(rel="stylesheet", href="https://bootswatch.com/4/darkly/bootstrap.min.css")
+    link(rel="stylesheet", href="dist/style.min.css")
+
+    //- 頁面用的 style，可刪
+    style.
+      .js-append-links {
+        padding: 0;
+      }
+      .js-append-links a {
+        color: rgba(255, 255, 255, .8) !important;
+      }
+
+    // Google Tag Manager
+    script.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PGQ9WQT');
+  body
+
+    // Google Tag Manager (noscript)
+    noscript
+      iframe(src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT", height="0", width="0", style="display:none;visibility:hidden")
+    
+    #app.container.pt-5.pb-5
+
+      h1.h3.text-center=title
+      h6.text-center 筆記文：
+        a(href="") Let's Write
+
+      hr.mt-5.mb-5
+
+      .row
+        
+        // 店家清單
+        .col-md-6
+
+          // 選擇站
+          .row.mb-4
+            .col.text-center
+              button.btn.btn-lg.mr-2.btn-outline-warning.active(type="button")
+                span.h2 公館站
+              button.btn.btn-lg.ml-2.btn-outline-warning(type="button")
+                span.h2 市政府站
+          
+          // 清單
+          .row
+            .col
+              .card.mb-3
+                h5.card-header.text-center 蔬食店家
+                .list-group.list-group-flush
+                  button.list-group-item.list-group-item-action(v-for="s in shops", :class="{ 'active': s.id === shop.id }", @click="shop = shops[s.id]") {{ s.name }}
+
+        // 詳細資料
+        .col-md-6
+          .card.border-light
+            h5.card-header.text-center 詳細資訊
+            .card-body
+              h4.mb-3 {{ shop.name }}
+              p.mb-1 {{ shop.tel }}
+              p.mb-2 {{ shop.site }}
+              .embed-responsive.embed-responsive-16by9
+                iframe(:src="'https://www.google.com/maps/embed/v1/place?key=AIzaSyDtu-vNL3cTLQF_Tongrtckzfs8LS4ClkM&q=' + shop.name", frameborder="0", allowfullscreen)
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js")
+    script(src="dist/main.min.js")
