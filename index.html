@@ -56,15 +56,15 @@
           <!-- 選擇站-->
           <div class="row mb-4">
             <div class="col text-center">
-              <button class="btn btn-lg mr-2 btn-outline-warning active" type="button"><span class="h2">公館站</span></button>
-              <button class="btn btn-lg ml-2 btn-outline-warning" type="button"><span class="h2">市政府站</span></button>
+              <button class="btn btn-lg mr-2 btn-outline-warning" type="button" @click="getShops('公館')" :class="{ 'active': mrt == '公館' }"><span class="h2">公館站</span></button>
+              <button class="btn btn-lg ml-2 btn-outline-warning" type="button" @click="getShops('古亭')" :class="{ 'active': mrt == '古亭' }"><span class="h2">古亭站</span></button>
             </div>
           </div>
           <!-- 清單-->
           <div class="row">
             <div class="col">
               <div class="card mb-3">
-                <h5 class="card-header text-center">蔬食店家</h5>
+                <h5 class="card-header text-center">{{ cardName }} 蔬食店家</h5>
                 <div class="list-group list-group-flush">
                   <button class="list-group-item list-group-item-action" v-for="s in shops" :class="{ 'active': s.id === shop.id }" @click="shop = shops[s.id]">{{ s.name }}</button>
                 </div>
@@ -73,7 +73,7 @@
           </div>
         </div>
         <!-- 詳細資料-->
-        <div class="col-md-6">
+        <div class="col-md-6" v-show="shop.name !== undefined">
           <div class="card border-light">
             <h5 class="card-header text-center">詳細資訊</h5>
             <div class="card-body">

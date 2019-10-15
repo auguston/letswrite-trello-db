@@ -74,21 +74,21 @@ html(lang="zh-TW")
           // 選擇站
           .row.mb-4
             .col.text-center
-              button.btn.btn-lg.mr-2.btn-outline-warning.active(type="button")
+              button.btn.btn-lg.mr-2.btn-outline-warning(type="button", @click="getShops('公館')", :class="{ 'active': mrt == '公館' }")
                 span.h2 公館站
-              button.btn.btn-lg.ml-2.btn-outline-warning(type="button")
-                span.h2 市政府站
+              button.btn.btn-lg.ml-2.btn-outline-warning(type="button", @click="getShops('古亭')", :class="{ 'active': mrt == '古亭' }")
+                span.h2 古亭站
           
           // 清單
           .row
             .col
               .card.mb-3
-                h5.card-header.text-center 蔬食店家
+                h5.card-header.text-center {{ cardName }} 蔬食店家
                 .list-group.list-group-flush
                   button.list-group-item.list-group-item-action(v-for="s in shops", :class="{ 'active': s.id === shop.id }", @click="shop = shops[s.id]") {{ s.name }}
 
         // 詳細資料
-        .col-md-6
+        .col-md-6(v-show="shop.name !== undefined")
           .card.border-light
             h5.card-header.text-center 詳細資訊
             .card-body
