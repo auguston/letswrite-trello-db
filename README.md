@@ -1,5 +1,5 @@
-# 用原生JS 做一個簡單的手風琴Accordion/Collapse功能
+# 拿Trello當資料庫 建一個店家清單：下篇-建立清單頁面
 
-Demo：[demo](https://auguston.github.io/augurio-collapse-accordion/)
+Demo：[demo](https://auguston.github.io/letswrite-trello-db/)
 
-筆記文：[Let's Write](https://letswrite.tw/js-collapse-accordion/)
+筆記文：[Let's Write](https://letswrite.tw/trello-db-list/)
